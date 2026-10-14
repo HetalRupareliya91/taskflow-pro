@@ -1,0 +1,19 @@
+:root { font-family: system-ui, sans-serif; color: #1f2933; background: #f5f7fa; }
+body { margin: 0; }
+.layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+aside { background: #1f2933; color: #fff; padding: 16px; overflow-y: auto; }
+aside h1 { font-size: 18px; margin: 0 0 16px; }
+nav { display: flex; flex-direction: column; gap: 4px; }
+nav button { background: none; border: 0; color: #cbd2d9; text-align: left; padding: 6px 8px; border-radius: 6px; cursor: pointer; }
+nav button.active, nav button:hover { background: #323f4b; color: #fff; }
+main { padding: 24px; max-width: 760px; }
+.form { display: grid; gap: 8px; margin-bottom: 16px; }
+.form input, .form textarea { padding: 8px; border: 1px solid #cbd2d9; border-radius: 6px; font: inherit; }
+.list { list-style: none; padding: 0; display: grid; gap: 8px; }
+.list li { background: #fff; border: 1px solid #e4e7eb; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; gap: 12px; }
+.list p { margin: 4px 0 0; color: #616e7c; }
+.actions { display: flex; gap: 6px; align-items: center; }
+.badge { font-size: 12px; padding: 2px 8px; border-radius: 99px; background: #e3f8ff; }
+.badge.archived { background: #e4e7eb; }
+.error { color: #ba2525; }
+.empty { color: #7b8794; }
