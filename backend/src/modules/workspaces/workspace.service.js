@@ -31,3 +31,8 @@ export function updateWorkspace(id, input) {
   if (Object.keys(errors).length) throw badRequest(errors);
   return store.update(TABLE, id, pickWorkspaceFields(input));
 }
+
+export function removeWorkspace(id) {
+  getWorkspace(id);
+  store.remove(TABLE, id);
+}
