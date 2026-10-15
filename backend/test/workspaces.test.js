@@ -48,3 +48,11 @@ test('PATCH /workspaces/:id updates status', async () => {
   assert.equal(res.status, 200);
   assert.equal((await res.json()).data.status, 'archived');
 });
+
+test('DELETE /workspaces/:id removes the workspace', async () => {
+  const created = await (await fetch(base, send('POST', { title: 'To delete' }))).json();
+  const del = await fetch(`${base}/${created.data.id}`, { method: 'DELETE' });
+  assert.equal(del.status, 204);
+  const res = await fetch(`${base}/${created.data.id}`);
+  assert.equal(res.status, 404);
+});
