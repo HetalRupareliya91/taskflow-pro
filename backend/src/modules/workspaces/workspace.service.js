@@ -24,3 +24,10 @@ export function createWorkspace(input) {
   if (Object.keys(errors).length) throw badRequest(errors);
   return store.insert(TABLE, { status: DEFAULT_STATUS, ...pickWorkspaceFields(input) });
 }
+
+export function updateWorkspace(id, input) {
+  getWorkspace(id);
+  const errors = validateWorkspace(input, { partial: true });
+  if (Object.keys(errors).length) throw badRequest(errors);
+  return store.update(TABLE, id, pickWorkspaceFields(input));
+}
