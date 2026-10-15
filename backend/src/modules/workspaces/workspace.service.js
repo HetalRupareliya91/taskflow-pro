@@ -36,3 +36,10 @@ export function removeWorkspace(id) {
   getWorkspace(id);
   store.remove(TABLE, id);
 }
+
+import { STATUSES } from './workspace.constants.js';
+
+export function statsWorkspaces() {
+  const rows = store.all(TABLE);
+  return { total: rows.length, byStatus: Object.fromEntries(STATUSES.map((s) => [s, rows.filter((r) => r.status === s).length])) };
+}
