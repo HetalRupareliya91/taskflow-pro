@@ -33,3 +33,11 @@ test('POST /workspaces creates a workspace', async () => {
   assert.equal(data.title, 'Test workspace');
   assert.equal(data.status, 'active');
 });
+
+test('POST /workspaces rejects invalid input', async () => {
+  const res = await fetch(base, send('POST', { status: 'unknown' }));
+  assert.equal(res.status, 400);
+  const body = await res.json();
+  assert.ok(body.details.title);
+  assert.ok(body.details.status);
+});
