@@ -18,3 +18,9 @@ export function getWorkspace(id) {
   if (!row) throw notFound('Workspace');
   return row;
 }
+
+export function createWorkspace(input) {
+  const errors = validateWorkspace(input);
+  if (Object.keys(errors).length) throw badRequest(errors);
+  return store.insert(TABLE, { status: DEFAULT_STATUS, ...pickWorkspaceFields(input) });
+}
