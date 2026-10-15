@@ -41,3 +41,10 @@ test('POST /workspaces rejects invalid input', async () => {
   assert.ok(body.details.title);
   assert.ok(body.details.status);
 });
+
+test('PATCH /workspaces/:id updates status', async () => {
+  const created = await (await fetch(base, send('POST', { title: 'To archive' }))).json();
+  const res = await fetch(`${base}/${created.data.id}`, send('PATCH', { status: 'archived' }));
+  assert.equal(res.status, 200);
+  assert.equal((await res.json()).data.status, 'archived');
+});
