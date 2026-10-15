@@ -17,3 +17,8 @@ export const create = asyncHandler(async (req, res) => {
 export const update = asyncHandler(async (req, res) => {
   res.json({ data: service.updateWorkspace(req.params.id, req.body) });
 });
+
+export const remove = asyncHandler(async (req, res) => {
+  service.removeWorkspace(req.params.id);
+  res.status(204).end();
+});
