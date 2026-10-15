@@ -12,3 +12,7 @@ router.get('/:id', controller.getOne);
 
 register('workspaces', router);
 export default router;
+
+router.post('/', controller.create);
+router.patch('/:id', controller.update);
+router.delete('/:id', controller.remove);
