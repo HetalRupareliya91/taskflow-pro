@@ -25,3 +25,11 @@ test('GET /workspaces returns a list', async () => {
   const body = await res.json();
   assert.ok(Array.isArray(body.data));
 });
+
+test('POST /workspaces creates a workspace', async () => {
+  const res = await fetch(base, send('POST', { title: 'Test workspace' }));
+  assert.equal(res.status, 201);
+  const { data } = await res.json();
+  assert.equal(data.title, 'Test workspace');
+  assert.equal(data.status, 'active');
+});
