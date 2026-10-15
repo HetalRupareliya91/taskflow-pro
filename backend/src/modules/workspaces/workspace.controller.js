@@ -22,3 +22,7 @@ export const remove = asyncHandler(async (req, res) => {
   service.removeWorkspace(req.params.id);
   res.status(204).end();
 });
+
+export const stats = asyncHandler(async (req, res) => {
+  res.json({ data: service.statsWorkspaces() });
+});
