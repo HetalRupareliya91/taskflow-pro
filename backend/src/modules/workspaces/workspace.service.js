@@ -12,3 +12,9 @@ export function listWorkspaces({ status, q } = {}) {
   }
   return rows.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
+
+export function getWorkspace(id) {
+  const row = store.get(TABLE, id);
+  if (!row) throw notFound('Workspace');
+  return row;
+}
